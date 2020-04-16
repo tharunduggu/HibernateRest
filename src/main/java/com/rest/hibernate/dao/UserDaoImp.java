@@ -18,7 +18,6 @@ SessionFactory sessionFactory;
 
 	public void addUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
-		
 		session.save(user);	
 	}
 
@@ -27,7 +26,7 @@ SessionFactory sessionFactory;
 	public List<User> getUser() {
 		System.out.println("Dao request recieved ");
 		Session session = sessionFactory.getCurrentSession();
-		String hqlString = "From User;";
+		String hqlString = "From User";
 		Query query = session.createQuery(hqlString);
 		return query.list();
 //		Session session = sessionFactory.getCurrentSession();
@@ -48,6 +47,13 @@ SessionFactory sessionFactory;
 		
 		User user = findById(id);
 		session.delete(user);
+	}
+	
+	public User updateUser(User user) {
+		Session session = sessionFactory.getCurrentSession();
+		session.update(user);
+		System.out.println(user.toString());
+		return user;
 	}
 
 }

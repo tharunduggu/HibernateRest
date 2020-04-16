@@ -40,5 +40,9 @@ public class UserServiceImp implements UserService {
 		userDao.delete(id);
 		
 	}
-
+	
+	public User updateUserById(User user) {
+		userDao.updateUser(user);
+		return user;
+	}
 }
